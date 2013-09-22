@@ -2,7 +2,7 @@
 
 <project name="name-of-project" default="build" basedir=".">
  <target name="build"
-   depends="prepare,composer-install,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdox,phpunit,phpcb"/>
+   depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdox,phpunit,phpcb"/>
 
  <target name="build-parallel"
    depends="prepare,lint,tools-parallel,phpunit,phpcb"/>
@@ -38,11 +38,6 @@
   <mkdir dir="${project.basedir}/build/pdepend"/>
   <mkdir dir="${project.basedir}/build/phpdox"/>
  </target>
-
-  <target name="composer-install" depends="prepare" description="Install Composer dependencies">
-    <echo msg="Installing Composer dependencies..."/> 
-   <composer command="install"/>
-  </target>
 
  <target name="lint" description="Perform syntax check of sourcecode files">
   <echo msg="Performing lint check..."/> 
@@ -138,7 +133,7 @@
   <exec executable="${project.basedir}/vendor/bin/phpdox"/>
  </target>
 
- <target name="phpunit" depends="composer-install" description="Run unit tests with PHPUnit">
+ <target name="phpunit" description="Run unit tests with PHPUnit">
   <echo msg="Running PHPUnit tests..."/> 
   <exec executable="${project.basedir}/vendor/bin/phpunit" logoutput="true" checkreturn="1"/>
  </target>
