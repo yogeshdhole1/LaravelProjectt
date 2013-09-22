@@ -20,11 +20,16 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
-	
+
 	protected function thisIsAnExample()
 	{
 
 		return null;
+	}
+
+	private function doSomething()
+	{
+		return "something";
 	}
 
 }
