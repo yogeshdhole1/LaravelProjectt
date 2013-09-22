@@ -2,7 +2,7 @@
 
 <project name="name-of-project" default="build" basedir=".">
  <target name="build"
-   depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdox,phpunit,phpcb"/>
+   depends="prepare,composer-install,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdox,phpunit,phpcb"/>
 
  <target name="build-parallel"
    depends="prepare,lint,tools-parallel,phpunit,phpcb"/>
@@ -36,6 +36,10 @@
   <mkdir dir="${project.basedir}/build/pdepend"/>
   <mkdir dir="${project.basedir}/build/phpdox"/>
  </target>
+
+  <target name="composer-install" depends="prepare" description="Install Composer dependencies">
+   <composer command="install"/>
+  </target>
 
  <target name="lint" description="Perform syntax check of sourcecode files">
   <apply executable="php" checkreturn="1">
