@@ -138,7 +138,7 @@
   <exec executable="${project.basedir}/vendor/bin/phpdox"/>
  </target>
 
- <target name="phpunit" description="Run unit tests with PHPUnit">
+ <target name="phpunit" depends="composer-install" description="Run unit tests with PHPUnit">
   <echo msg="Running PHPUnit tests..."/> 
   <exec executable="${project.basedir}/vendor/bin/phpunit" logoutput="true" checkreturn="1"/>
  </target>
